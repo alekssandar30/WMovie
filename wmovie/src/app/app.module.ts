@@ -12,7 +12,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { FormsModule } from '@angular/forms';
-import { MoviesComponent } from './components/movies/movies.component';
+import { MoviesComponent } from './pages/movies/movies.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TvSeriesComponent } from './pages/tv-series/tv-series.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MoviesComponent } from './components/movies/movies.component';
     SliderComponent,
     SearchBarComponent,
     MovieComponent,
-    MoviesComponent
+    MoviesComponent,
+    HomeComponent,
+    TvSeriesComponent
   ],
   imports: [
     BrowserModule,

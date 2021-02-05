@@ -1,4 +1,4 @@
-<div class="movie-container">
+<div class="movie-container" (click)="playMovie(movie.id)">
   <img src="https://image.tmdb.org/t/p/w200{{movie?.poster_path}}" alt="{{movie.title}}">
 
   <div class="movie-info">

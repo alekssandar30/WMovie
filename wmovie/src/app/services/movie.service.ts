@@ -14,7 +14,7 @@ const enum endpoint {
   originals = '/discover/tv',
   search_movies = '/search/movie',
   images_endpoint = 'https://image.tmdb.org/t/p/w1280',
-  featured_movies = '/discover'
+  featured_movies = '/discover',
 }
 
 @Injectable({
@@ -22,6 +22,7 @@ const enum endpoint {
 })
 export class MovieService {
   private URL = 'https://api.themoviedb.org/3';
+  private API_URL = 'https://pacific-cove-06057.herokuapp.com/';
   // tslint:disable-next-line:variable-name
   private api_key = environment.api;
 
@@ -89,7 +90,15 @@ export class MovieService {
       params: {
         api_key: this.api_key,
         query: 'movie?sort_by=popularity.desc',
-      }
-    })
+      },
+    });
+  }
+
+  playMovie(movieId): any {
+    return this.http.get(this.API_URL + 'getMovieById/' + movieId);
+  }
+
+  getMovies() {
+    return this.http.get(this.API_URL);
   }
 }
