@@ -78,5 +78,9 @@ ul {
     &:hover {
       color: #696969;
     }
+
+    a.active {
+      color: white;
+    }
   }
 }

@@ -1,7 +1,12 @@
-<div class="header">
-  <app-header></app-header>
-</div>
+<div class="container">
+  <div class="header">
+    <app-header></app-header>
+  </div>
 
-<div class="movie-container">
-  <app-movie *ngFor="let movie of popular.results" [movie]="movie"></app-movie>
+  <div class="movie-container">
+    <app-movie
+      *ngFor="let movie of popular?.results"
+      [movie]="movie"
+    ></app-movie>
+  </div>
 </div>

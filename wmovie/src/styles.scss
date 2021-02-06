@@ -4,17 +4,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+html,
 body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #1d1d1d;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 .slick-next {
-  right:20px;
+  right: 20px;
   z-index: 99;
+
   &:before {
     font-size: 40px;
   }
@@ -23,8 +29,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .slick-prev {
   left: 20px;
   z-index: 99;
+
   &:before {
     font-size: 40px;
   }
 }
-

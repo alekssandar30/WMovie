@@ -4,7 +4,7 @@
   <div class="movie__images">
     <div class="thumbnails">
       <ngx-slick-carousel [config]="sliderConfig" class="carousel">
-        <div class="slick-item" *ngFor="let m of movies" ngxSlickItem>
+        <div class="slick-item" class="movie-container" *ngFor="let m of movies" ngxSlickItem>
           <app-movie [movie]="m"></app-movie>
 
         </div>

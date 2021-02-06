@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { MovieService } from 'src/app/services/movie.service';
 export class SearchBarComponent implements OnInit {
   searchInput = '';
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -20,6 +21,7 @@ export class SearchBarComponent implements OnInit {
       console.log(resp);
       // redirectuj se na movies komponentu i prosledi kroz router ovaj resp
       // movies komponenta ce biti u karticama...
+      // this.router.navigate(['movies'], resp.results);
     });
   }
 }

@@ -6,9 +6,11 @@
        <img src="assets/SRBILIX.svg" alt="logo" [ngStyle]="{'width': '200px'}">
      </a>
      <ul>
-       <li class="active"><a routerLink="/">Home</a></li>
+       <li >
+         <a [routerLink]="['']" routerLinkActive="active">Home</a>
+      </li>
        <!-- <li><a href="#">TV Shows</a></li> -->
-       <li><a routerLink="movies">Movies</a></li>
+       <li><a [routerLink]="['movies']" routerLinkActive="['active']">Movies</a></li>
        <!-- <li><a href="#">Latest</a></li>
        <li><a href="#">My List</a></li> -->
      </ul>
