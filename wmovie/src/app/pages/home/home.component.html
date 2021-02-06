@@ -25,24 +25,7 @@
 
 
     <!--MAIN AREA-->
-   <div class="header__main" id="stickyHeader" [class.sticky]="sticky" #stickHeader>
-     <div class="header__left">
-       <a routerLink="/">
-         <img src="assets/netflix.svg" alt="logo">
-       </a>
-       <ul>
-         <li class="active"><a routerLink="/">Home</a></li>
-         <!-- <li><a href="#">TV Shows</a></li> -->
-         <li><a routerLink="movies">Movies</a></li>
-         <!-- <li><a href="#">Latest</a></li>
-         <li><a href="#">My List</a></li> -->
-       </ul>
-     </div>
-
-     <div class="header__right">
-       <app-search-bar></app-search-bar>
-     </div>
-   </div>  <!--HEADER MAIN ENDS HERE-->
+   <app-header></app-header>
 
   </div>
 

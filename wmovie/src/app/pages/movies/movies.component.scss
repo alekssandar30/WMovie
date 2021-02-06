@@ -1,8 +1,18 @@
 
 
+.header {
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 6rem;
+  padding: 1rem;
+}
 
 .movie-container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 

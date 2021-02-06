@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Movies } from 'src/app/models/movies';
 import { MovieService } from 'src/app/services/movie.service';
@@ -9,8 +9,6 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
-  sticky = false;
   subs: Subscription[] = [];
 
   trending: Movies;
@@ -25,7 +23,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   originalsLoaded = false;
   nowPlayingLoaded = false;
 
-  @ViewChild('stickHeader') header: ElementRef;
   headerBGUrl: string;
 
   constructor(private movieService: MovieService) { }
@@ -38,16 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subs.map((s) => s.unsubscribe());
   }
 
-  @HostListener('window:scroll', ['$event'])
-  handleScroll(): any {
-    const windowScroll = window.pageYOffset;
 
-    if (windowScroll >= this.header.nativeElement.offsetHeight) {
-      this.sticky = true;
-    } else {
-      this.sticky = false;
-    }
-  }
 
   // TODO: fix this
   changeBackgroundImg() {
