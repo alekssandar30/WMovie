@@ -1,0 +1,25 @@
+
+.video-modal {
+  display       : flex;
+  height        : 50%;
+  margin: 20% 20% 20% 20%;
+  flex-direction: column;
+  background-color: #373b69;
+
+  .videoWrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-modal-content {
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    .video-iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}

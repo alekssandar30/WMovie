@@ -94,11 +94,36 @@ export class MovieService {
     });
   }
 
-  playMovie(movieId): any {
-    return this.http.get(this.API_URL + 'getMovieById/' + movieId);
+  // returns a list of recommended movies for a specific movie
+  getRecommendedMovies(movieId): Observable<Movies> {
+    return this.http.get<Movies>(
+      `${this.URL}/movie/${movieId}/recommendations`,
+      {
+        params: {
+          api_key: this.api_key,
+        },
+      }
+    );
   }
 
-  getMovies() {
+  getTranslationsForMovie(movieId): any {
+    return this.http.get(`${this.URL}/movie/${movieId}/translations`, {
+      params: {
+        api_key: this.api_key,
+      },
+    });
+  }
+
+  // tslint:disable-next-line:max-line-length
+  // ********************************************************************* MILOSEV API ************************************************************************
+
+  playMovie(movie, movieId): any {
+    return this.http.get(this.API_URL + 'getMovieById/' + movieId + '/' + movie, {
+      responseType: 'text'
+    });
+  }
+
+  getMovies(): any {
     return this.http.get(this.API_URL);
   }
 }

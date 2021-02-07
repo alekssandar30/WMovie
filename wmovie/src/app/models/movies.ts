@@ -20,6 +20,7 @@ export interface ResultsEntity {
   vote_average: number;
   overview: string;
   release_date: string;
+  media_type?: string;
 }
 export interface Dates {
   maximum: string;

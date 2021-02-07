@@ -10,12 +10,12 @@
 
         <button class="play-button"> <!-- Ovo je uvek za naslovni film...-->
           <mat-icon>arrow_right</mat-icon>
-          <span>Play</span>
+          <span>Pusti</span>
         </button>
 
         <button class="more-button">
           <mat-icon>info</mat-icon>
-          <span>More Info</span>
+          <span>Info</span>
         </button>
 
       </div>
@@ -33,7 +33,7 @@
     <app-slider title="Trending" *ngIf="trendingLoaded" [movies]="trending?.results" ></app-slider>
     <app-slider title="Top Rated" *ngIf="topRatedLoaded" [movies]="topRated?.results" ></app-slider>
     <app-slider title="Now Playing" *ngIf="nowPlayingLoaded" [movies]="nowPlaying?.results" ></app-slider>
-    <app-slider title="Originals" *ngIf="originalsLoaded" [movies]="originals?.results" ></app-slider>
+    <!-- <app-slider title="Originals" *ngIf="originalsLoaded" [movies]="originals?.results" ></app-slider> -->
     <app-slider title="Popular" *ngIf="popularLoaded" [movies]="popular?.results" ></app-slider>
   </div>
 

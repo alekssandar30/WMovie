@@ -1,0 +1,36 @@
+
+<h2 mat-dialog-title>Uzivajte u filmu!</h2>
+<div class="video-modal">
+  <mat-dialog-content class="video-modal-content">
+
+      <iframe
+        style="video-iframe"
+        [src]="domSanitizer.bypassSecurityTrustResourceUrl(hostLink)"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+
+  </mat-dialog-content>
+
+  <hr />
+
+  <mat-dialog-actions align="right">
+    <button class="mat-raised-button" (click)="close()">Cancel</button>
+  </mat-dialog-actions>
+</div>
+
+<!-- <mat-dialog-actions class="app-dialog-actions">
+  <button type="button" class="btn btn-primary btn-sm" (click)="close()">Close</button>
+</mat-dialog-actions> -->
+
+<!-- <iframe [width]="(data.videoWidth - 50)" [height]="data.videoHeight"
+    [src]="domSanitizer.bypassSecurityTrustResourceUrl(data.videoUrl)" frameborder="0"
+    allowfullscreen></iframe>
+
+<div class="video-modal">
+  <iframe
+    [src]="domSanitizer.bypassSecurityTrustResourceUrl(hostLink)"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+</div> -->

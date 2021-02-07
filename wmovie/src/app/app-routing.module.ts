@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'movies',
     component: MoviesComponent
+  },
+  {
+    path: '**',
+    component: HomeComponent
   }
 ];
 

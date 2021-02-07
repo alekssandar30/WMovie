@@ -16,6 +16,9 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TvSeriesComponent } from './pages/tv-series/tv-series.component';
 import { HeaderComponent } from './components/header/header.component';
+import { VideoModalComponent } from './components/video-modal/video-modal.component';
+
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
     HomeComponent,
     TvSeriesComponent,
     HeaderComponent,
+    VideoModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ import { HeaderComponent } from './components/header/header.component';
     SlickCarouselModule,
     HttpClientModule,
     FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
