@@ -16,9 +16,9 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getTrending().subscribe((data) => {
       this.movies = data;
-      this.movies.results = this.movies.results.filter(
-        (x) => x.media_type === 'movie'
-      );
+      // this.movies.results = this.movies.results.filter(
+      //   (x) => x.media_type === 'movie'
+      // );
 
       this.movieService.getTopRated().subscribe((resp) => {
         resp.results.forEach((movie) => {

@@ -7,20 +7,20 @@ export interface Movies {
 }
 export interface ResultsEntity {
   popularity: number;
-  vote_count: number;
+  voteCount: number;
   video: boolean;
-  poster_path: string;
+  posterPath: string;
   id: number;
   adult: boolean;
-  backdrop_path: string;
-  original_language: string;
-  original_title: string;
+  backdropPath: string;
+  originalLanguage: string;
+  originalTitle: string;
   genre_ids?: (number)[] | null;
   title: string;
-  vote_average: number;
+  voteAverage: number;
   overview: string;
-  release_date: string;
-  media_type?: string;
+  releaseDate: string;
+  mediaType?: string;
 }
 export interface Dates {
   maximum: string;

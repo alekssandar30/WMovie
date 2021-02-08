@@ -1,23 +1,35 @@
-
 <h2 mat-dialog-title>Uzivajte u filmu!</h2>
-<div class="video-modal">
-  <mat-dialog-content class="video-modal-content">
+<!-- <div class="video-modal"> -->
+<!-- <mat-dialog-content class="video-modal-content">
+    <iframe
+      allowfullscreen
+      frameborder="0"
+      scrolling="no"
+      [src]="domSanitizer.bypassSecurityTrustResourceUrl(hostLink)"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    ></iframe>
+  </mat-dialog-content> -->
 
-      <iframe
-        style="video-iframe"
-        [src]="domSanitizer.bypassSecurityTrustResourceUrl(hostLink)"
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
+<mat-dialog-content>
+  <div class="videoWrapper">
+    <iframe
+      [src]="domSanitizer.bypassSecurityTrustResourceUrl(hostLink)"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+  </div>
+</mat-dialog-content>
 
-  </mat-dialog-content>
+<hr />
 
-  <hr />
+<!-- <mat-dialog-actions class="app-dialog-actions">
+    <button type="button" class="btn btn-primary btn-sm" (click)="close()">Close</button>
+  </mat-dialog-actions> -->
 
-  <mat-dialog-actions align="right">
+<!-- <mat-dialog-actions align="right">
     <button class="mat-raised-button" (click)="close()">Cancel</button>
-  </mat-dialog-actions>
-</div>
+  </mat-dialog-actions> -->
+<!-- </div> -->
 
 <!-- <mat-dialog-actions class="app-dialog-actions">
   <button type="button" class="btn btn-primary btn-sm" (click)="close()">Close</button>

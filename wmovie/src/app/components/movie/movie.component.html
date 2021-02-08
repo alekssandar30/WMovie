@@ -1,9 +1,9 @@
 <div class="movie" (click)="playMovie(movie)">
-  <img src="https://image.tmdb.org/t/p/w200{{movie?.poster_path}}" alt="{{movie.title}}">
+  <img src="https://image.tmdb.org/t/p/w200{{movie?.posterPath}}" alt="{{movie.title}}">
 
   <div class="movie-info">
     <h4> {{movie.title}} </h4>
-    <span class="tag" [style.color]="movie.vote_average >= 8 ? 'green' : movie.vote_average >= 6 ? 'orange' : 'red'"> {{movie.vote_average}} </span>
+    <span class="tag" [style.color]="movie.voteAverage >= 8 ? 'green' : movie.voteAverage >= 6 ? 'orange' : 'red'"> {{movie.voteAverage}} </span>
   </div>
 
   <div class="movie-overview">
