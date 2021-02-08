@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { VideoModalComponent } from '../video-modal/video-modal.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_SCROLL_STRATEGY_FACTORY } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movie',
@@ -35,15 +35,16 @@ export class MovieComponent implements OnInit {
           dialogConfig.autoFocus = true;
 
           let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
-          if (this.innerWidth > 1500) {
-            relativeWidth = (1500 * 80) / 100;
-          } else {
-            relativeWidth = (this.innerWidth * 80) / 100;
-          }
+          // if (this.innerWidth > 1500) {
+          //   relativeWidth = (1500 * 80) / 100;
+          // } else {
+          //   relativeWidth = (this.innerWidth * 80) / 100;
+          // }
 
-          const relativeHeight = (relativeWidth * 9) / 16 + 120; // 16:9 to which we add 120 px for the dialog action buttons ("close")
+          const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
           dialogConfig.width = relativeWidth + 'px';
-          dialogConfig.height = relativeHeight + 'px';
+          dialogConfig.maxHeight = relativeHeight + 'px';
+
 
           const dialogRef = this.dialog.open(VideoModalComponent, dialogConfig);
 

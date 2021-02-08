@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
-import { Movies } from '../models/movies';
+import { Observable, Subject } from 'rxjs';
+import { Movies, ResultsEntity } from '../models/movies';
 
 const enum endpoint {
   latest = '/movie/latest',
@@ -23,6 +23,8 @@ const enum endpoint {
 export class MovieService {
   private URL = 'https://api.themoviedb.org/3';
   private API_URL = 'https://pacific-cove-06057.herokuapp.com';
+
+  $movieSubject = new Subject();
 
   // tslint:disable-next-line:variable-name
   private api_key = environment.api;
@@ -120,6 +122,16 @@ export class MovieService {
   // tslint:disable-next-line:max-line-length
   // ********************************************************************* MILOSEV API v2 ************************************************************************
 
+  // search subject
+  public setSearchedMovie(value: ResultsEntity[]) {
+    this.$movieSubject.next(value);
+  }
+
+  public getSearchedMovie(): any {
+    return this.$movieSubject;
+  }
+
+
   playMovie(movie, movieId): any {
     return this.http.get(
       this.API_URL + '/getMovieById/' + movieId + '/' + movie,
@@ -143,5 +155,9 @@ export class MovieService {
 
   getPopularMovies(): Observable<Movies> {
     return this.http.get<Movies>(`${this.API_URL}/tmdb/getPopular`);
+  }
+
+  searchMovie(searchText): Observable<Movies> {
+    return this.http.get<Movies>(`${this.API_URL}/tmdb/search/${searchText}`);
   }
 }

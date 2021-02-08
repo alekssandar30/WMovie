@@ -18,10 +18,10 @@ export class SearchBarComponent implements OnInit {
     console.log(this.searchInput);
 
     // this.movieService.searchMovie(this.searchInput).subscribe((resp: any) => {
-    //   console.log(resp);
-    //   // redirectuj se na movies komponentu i prosledi kroz router ovaj resp
-    //   // movies komponenta ce biti u karticama...
-    //   // this.router.navigate(['movies'], resp.results);
+      // console.log(resp);
+      // redirectuj se na movies komponentu i prosledi kroz router ovaj resp
+      // movies komponenta ce biti u karticama...
+      // this.router.navigate(['movies'], resp.results);
     // });
   }
 }
