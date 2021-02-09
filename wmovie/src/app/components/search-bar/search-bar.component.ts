@@ -14,13 +14,8 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  Search() {
+  Search(): any {
     console.log(this.searchInput);
     this.router.navigate(['/movies/search/' + this.searchInput]);
-    // this.movieService.searchMovie(this.searchInput).subscribe((resp: any) => {
-    //   console.log(resp);
-    //   // redirectuj se na movies komponentu i prosledi kroz router ovaj resp
-
-    // });
   }
 }

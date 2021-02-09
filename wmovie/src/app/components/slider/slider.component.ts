@@ -19,10 +19,5 @@ export class SliderComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    // izbacuje serije
-    // if (this.movies[0].media_type) {
-    //   this.movies = this.movies.filter((x) => x.media_type === 'movie');
-    // }
-  }
+  ngOnInit(): void {}
 }

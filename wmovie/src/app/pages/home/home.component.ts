@@ -45,36 +45,41 @@ export class HomeComponent implements OnInit, OnDestroy {
       /\//g,
       '+'
     )}+(${this.trending.results[0].releaseDate.split('-')[0]})`;
-    this.movieService
-      .playMovie(formatedReq, this.trending.results[0].id)
-      .subscribe((resp) => {
-        if (resp !== 'Movie not found.') {
-          this.hostLink = resp;
+    this.subs.push(
+      this.movieService
+        .playMovie(formatedReq, this.trending.results[0].id)
+        .subscribe((resp) => {
+          if (resp !== 'Movie not found.') {
+            this.hostLink = resp;
 
-          const dialogConfig = new MatDialogConfig();
-          dialogConfig.disableClose = false;
-          dialogConfig.autoFocus = true;
+            const dialogConfig = new MatDialogConfig();
+            dialogConfig.disableClose = false;
+            dialogConfig.autoFocus = true;
 
-          let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
-          // if (this.innerWidth > 1500) {
-          //   relativeWidth = (1500 * 80) / 100;
-          // } else {
-          //   relativeWidth = (this.innerWidth * 80) / 100;
-          // }
+            let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
+            if (this.innerWidth > 1500) {
+              relativeWidth = (1500 * 80) / 100;
+            } else {
+              relativeWidth = (this.innerWidth * 80) / 100;
+            }
 
-          const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
-          dialogConfig.width = relativeWidth + 'px';
-          dialogConfig.height = relativeHeight + 'px';
+            const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
+            dialogConfig.width = relativeWidth + 'px';
+            dialogConfig.height = relativeHeight + 'px';
 
-          const dialogRef = this.dialog.open(VideoModalComponent, dialogConfig);
+            const dialogRef = this.dialog.open(
+              VideoModalComponent,
+              dialogConfig
+            );
 
-          dialogRef.componentInstance.hostLink = this.hostLink;
+            dialogRef.componentInstance.hostLink = this.hostLink;
 
-          dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
-          });
-        }
-      });
+            dialogRef.afterClosed().subscribe((result) => {
+              console.log(`Dialog result: ${result}`);
+            });
+          }
+        })
+    );
   }
 
   // TODO: fix this

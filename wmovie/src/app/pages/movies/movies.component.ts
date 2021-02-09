@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Movies } from 'src/app/models/movies';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -8,7 +9,8 @@ import { MovieService } from 'src/app/services/movie.service';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription = new Subscription();
   movies: Movies;
   moviesLoaded = false;
 
@@ -18,36 +20,48 @@ export class MoviesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      const movieName = params.get('movieName');
-      console.log(params);
+    this.subscriptions.add(
+      this.route.paramMap.subscribe((params) => {
+        const movieName = params.get('movieName');
+        console.log(params);
 
-      if (!movieName) {
-        this.movieService.getTrending().subscribe((data) => {
-          this.movies = data;
-          // this.movies.results = this.movies.results.filter(
-          //   (x) => x.media_type === 'movie'
-          // );
+        if (!movieName) {
+          this.subscriptions.add(
+            this.movieService.getTrending().subscribe((data) => {
+              this.movies = data;
+              // this.movies.results = this.movies.results.filter(
+              //   (x) => x.media_type === 'movie'
+              // );
 
-          this.movieService.getTopRated().subscribe((resp) => {
-            resp.results.forEach((movie) => {
-              if (
-                !(
-                  this.movies.results.filter((x) => x.id === movie.id).length >
-                  0
-                )
-              ) {
-                this.movies.results.push(movie);
-              }
-            });
-          });
-        });
-      } else {
-        // search
-        this.movieService.searchMovie(movieName).subscribe((data) => {
-          this.movies = data;
-        });
-      }
-    });
+              this.subscriptions.add(
+                this.movieService.getTopRated().subscribe((resp) => {
+                  resp.results.forEach((movie) => {
+                    if (
+                      !(
+                        this.movies.results.filter((x) => x.id === movie.id)
+                          .length > 0
+                      )
+                    ) {
+                      this.movies.results.push(movie);
+                    }
+                  });
+                })
+              );
+            })
+          );
+        } else {
+          // search
+          this.subscriptions.add(
+            this.movieService.searchMovie(movieName).subscribe((data) => {
+              this.movies = data;
+            })
+          );
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

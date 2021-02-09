@@ -17,7 +17,7 @@ export class VideoModalComponent implements OnInit {
     console.log(this.hostLink);
   }
 
-  close() {
+  close(): any {
     this.dialogRef.close();
   }
 
