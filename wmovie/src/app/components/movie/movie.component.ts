@@ -51,7 +51,7 @@ export class MovieComponent implements OnInit, OnDestroy {
 
             const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
             dialogConfig.width = relativeWidth + 'px';
-            dialogConfig.maxHeight = relativeHeight + 'px';
+            dialogConfig.height = relativeHeight + 'px';
 
             const dialogRef = this.dialog.open(
               VideoModalComponent,

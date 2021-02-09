@@ -15,6 +15,11 @@ export class SearchBarComponent implements OnInit {
   ngOnInit(): void {}
 
   Search(): any {
+    if (this.searchInput === '') {
+      this.router.navigate(['/movies']);
+      return;
+    }
+
     console.log(this.searchInput);
     this.router.navigate(['/movies/search/' + this.searchInput]);
   }

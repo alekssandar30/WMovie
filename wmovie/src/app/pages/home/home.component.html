@@ -29,7 +29,7 @@
 
   </div>
 
-  <div class="body" style="margin-top: 30rem;">
+  <div class="body">
     <app-slider title="U trendu" *ngIf="trendingLoaded" [movies]="trending?.results" ></app-slider>
     <app-slider title="Najbolje ocenjeni" *ngIf="topRatedLoaded" [movies]="topRated?.results" ></app-slider>
     <!-- <app-slider title="Now Playing" *ngIf="nowPlayingLoaded" [movies]="nowPlaying?.results" ></app-slider> -->

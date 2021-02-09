@@ -1,6 +1,13 @@
 
+
 .search-container {
   padding: 1rem;
+
+  input:focus {
+    outline: none;
+    z-index: 200;
+    box-shadow: 2px 2px 2px 2px rgb(200, 2, 55);
+  }
 
   .search {
     font-family: inherit;
