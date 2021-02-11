@@ -1,10 +1,12 @@
 .movie {
-  max-width: 100%;
+  // max-width: 300px;
+  position: absolute;
+  width: 300px;
   height: 360px;
-  width: 100%;
+  // width: 100%;
   // height: 350px;
   // min-height: 320px;
-  // max-height: 400px;
+  max-height: 400px;
   // background-color: #373b69;
   padding: 0.3rem;
   background-color: #070a0c;
@@ -15,21 +17,17 @@
   border-radius: 5px;
 
   img {
-    max-width: 300px;
+    // max-width: 300px;
     width: 100%;
     height: 80%;
-    object-fit: cover;
-  }
-
-  .movie:hover {
-    cursor: pointer;
+    // object-fit: cover;
   }
 
   .movie-info {
-    max-width: 80%;
+    width: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
     overflow: hidden;
     color: white;
     margin-top: 5px;
@@ -39,6 +37,9 @@
     }
 
     .tag {
+      margin-left: 5px;
+      min-width: 22px;
+      text-align: center;
       background-color: #22254b;
       padding: 0.2rem;
       border-radius: 5px;
@@ -70,6 +71,8 @@
     transition: transform 0.3s ease-in-out;
     overflow: auto;
     max-height: 60%;
+    max-width: 100%;
+    width: 90%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1);
@@ -78,7 +81,6 @@
 
 
 .movie:hover .movie-overview {
-  max-width: 90%;
   // position: absolute;
   // margin-left: .3rem;
   transform: translateY(-75px);
@@ -87,7 +89,7 @@
 
 
 // for laptops:
-@media screen and (min-width: 1200px) and (max-width: 1600px) {
+@media screen and (min-width: 1440px) {
 
   .movie {
     width: 200px;
@@ -107,7 +109,7 @@
     img {
       max-width: 250px;
       // width: 500px;
-      // object-fit: cover;
+      // object-fit: cover; TODO: fix this
     }
 
     .movie-info {
@@ -144,10 +146,34 @@
   }
 
   .movie:hover .movie-overview {
-    max-width: 70%;
+    max-width: 90%;
     // position: absolute;
     // margin-left: .3rem;
     transform: translateY(-73px);
     word-wrap: break-word;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+  .movie {
+    width: 200px;
+    height: 250px;
+    // height: 350px;
+    // min-height: 320px;
+    // max-height: 400px;
+    // background-color: #373b69;
+    padding: 0.2rem;
+    background-color: #070a0c;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+
+    img {
+      max-width: 250px;
+      // width: 500px;
+      // object-fit: cover;
+    }
   }
 }

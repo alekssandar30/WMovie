@@ -13,6 +13,7 @@ export class MovieComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
 
   @Input() movie;
+  @Input() showOverview;
   hostLink = '';
   innerWidth;
 

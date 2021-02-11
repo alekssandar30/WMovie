@@ -6,7 +6,7 @@
     <span class="tag" [style.color]="movie.voteAverage >= 8 ? 'green' : movie.voteAverage >= 6 ? 'orange' : 'red'"> {{movie.voteAverage}} </span>
   </div>
 
-  <div class="movie-overview">
+  <div class="movie-overview" *ngIf="showOverview">
     <h2>Overview:</h2>
     <p> {{movie.overview}} </p>
   </div>

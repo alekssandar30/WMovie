@@ -5,7 +5,8 @@
     <div class="thumbnails">
       <ngx-slick-carousel [config]="sliderConfig" class="carousel">
         <div class="slick-item" class="movie-container" *ngFor="let m of movies" ngxSlickItem>
-          <app-movie [movie]="m"></app-movie>
+          <app-movie [movie]="m" [showOverview]="false"></app-movie>
+          <!-- <img (click)="playMovie(m)" src="https://image.tmdb.org/t/p/w200{{m?.posterPath}}" alt="{{m.title}}" /> -->
 
         </div>
       </ngx-slick-carousel>
