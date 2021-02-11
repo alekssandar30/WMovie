@@ -1,11 +1,11 @@
 <div class="container">
   <div class="header">
     <!--BANNER AREA-->
-    <div class="header__banner"
+    <div class="header__banner" *ngIf="trendingLoaded"
          [ngStyle]="{
-      'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('+headerBGUrl+')'
+      'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('+activeMovie.backdropPath+')'
       }">
-      <h2>{{trending?.results[0].title}}</h2>
+      <h2>{{activeMovie.title}}</h2>
       <div class="header__buttons">
 
         <button class="play-button"> <!-- Ovo je uvek za naslovni film...-->

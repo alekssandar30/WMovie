@@ -24,23 +24,26 @@
     justify-content: center;
 
     h2 {
-      font-size: 5vw;
+      font-size: 3vw;
+      width: 90%;
+      word-wrap: break-word;
       margin-left: 3rem;
-      margin-bottom: 3rem;
-      margin-top: 8rem;
+      margin-bottom: 4rem;
+      margin-top: 5rem;
       color: lightgray;
     }
 
     .header__buttons {
       display: flex;
       // width: 3vw;
+      text-align: center;
 
       button {
         display: flex;
         gap: 10px;
         align-items: center;
-        font-size: 18px;
-        padding: 15px 40px;  // TOP BOTTOM = 15px,  RIGHT LEFT = 40px
+        font-size: .7rem;
+        padding: 1.2rem 1.5rem;  // TOP BOTTOM = 15px,  RIGHT LEFT = 40px
         border-radius: 5px;
         outline: none;
         border: none;

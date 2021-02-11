@@ -1,3 +1,4 @@
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
@@ -25,15 +26,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   // originalsLoaded = false;
   // nowPlayingLoaded = false;
 
-  headerBGUrl: string;
+  activeMovie;
   hostLink = '';
   innerWidth;
+  counter = 0;
 
   constructor(private movieService: MovieService, public dialog: MatDialog) {}
 
-  ngOnInit(): void {
+  ngOnInit(): any {
     this.innerWidth = window.innerWidth;
     this.loadMovies();
+
+    setInterval(() => {
+      this.activeMovie = this.trending.results[++this.counter];
+    }, 3500);
   }
 
   ngOnDestroy(): void {
@@ -41,13 +47,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   playBanerMovie() {
-    const formatedReq = `${this.trending.results[0].title.replace(
-      /\//g,
-      '+'
-    )}+(${this.trending.results[0].releaseDate.split('-')[0]})`;
+    const formatedReq = `${this.activeMovie.title.replace(/\//g, '+')}+(${
+      this.activeMovie.releaseDate.split('-')[0]
+    })`;
     this.subs.push(
       this.movieService
-        .playMovie(formatedReq, this.trending.results[0].id)
+        .playMovie(formatedReq, this.activeMovie.id)
         .subscribe((resp) => {
           if (resp !== 'Movie not found.') {
             this.hostLink = resp;
@@ -87,16 +92,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     // });
   }
 
-  // TODO: fix this
-  // changeBackgroundImg() {
-  //   setInterval(() => {
-  //     this.trending.results.forEach((item) => {
-  //       this.headerBGUrl =
-  //         'https://image.tmdb.org/t/p/original' + item.backdropPath;
-  //     });
-  //   }, 5000);
-  // }
-
   setDialogConfig(dialogConfig: MatDialogConfig): void {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
@@ -113,13 +108,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     dialogConfig.height = relativeHeight + 'px';
   }
 
-  loadMovies(): any {
+  loadMovies() {
     this.subs.push(
       this.movieService.getTrending().subscribe((data) => {
+        data.results.forEach((movie) => {
+          movie.backdropPath =
+            'https://image.tmdb.org/t/p/original' + movie.backdropPath;
+        });
         this.trending = data;
-        this.headerBGUrl =
-          'https://image.tmdb.org/t/p/original' +
-          this.trending.results[0].backdropPath;
+        // this.headerBGUrl =
+        //   'https://image.tmdb.org/t/p/original' +
+        //   this.trending.results[0].backdropPath;
+        // this.headerTitle = this.trending.results[0].title;
+        this.activeMovie = this.trending.results[0];
+        console.log(this.activeMovie);
         this.trendingLoaded = true;
       })
     );
