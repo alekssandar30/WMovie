@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   topRated: Movies;
   // originals: Movies;
   // nowPlaying: Movies;
+  sliderMovies: Movies;
 
   trendingLoaded = false;
   popularLoaded = false;
@@ -36,12 +37,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.innerWidth = window.innerWidth;
     this.loadMovies();
 
-    setInterval(() => {
-      if (this.counter === 34) { // magic number -> end of the trending array
-        this.counter = 0;
-      }
-      this.activeMovie = this.trending.results[this.counter++];
-    }, 3500);
+    // setInterval(() => {
+    //   if (this.counter === 34) { // magic number -> end of the trending array
+    //     this.counter = 0;
+    //   }
+    //   this.activeMovie = this.sliderMovies.results[this.counter++];
+    // }, 20000);
   }
 
   ngOnDestroy(): void {
@@ -65,10 +66,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
             const dialogRef = this.dialog.open(
               VideoModalComponent,
-              dialogConfig
+              {
+                width: dialogConfig.width,
+                height: dialogConfig.height,
+                data: {
+                  hostLink: this.hostLink
+                }
+
+              }
             );
 
-            dialogRef.componentInstance.hostLink = this.hostLink;
+            // dialogRef.componentInstance.hostLink = this.hostLink;
 
             dialogRef.afterClosed().subscribe((result) => {
               console.log(`Dialog result: ${result}`);
@@ -118,11 +126,12 @@ export class HomeComponent implements OnInit, OnDestroy {
             'https://image.tmdb.org/t/p/original' + movie.backdropPath;
         });
         this.trending = data;
+        this.sliderMovies = data;
         // this.headerBGUrl =
         //   'https://image.tmdb.org/t/p/original' +
         //   this.trending.results[0].backdropPath;
         // this.headerTitle = this.trending.results[0].title;
-        this.activeMovie = this.trending.results[0];
+        this.activeMovie = this.sliderMovies.results[0];
         console.log(this.activeMovie);
         this.trendingLoaded = true;
       })

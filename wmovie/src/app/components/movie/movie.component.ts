@@ -28,7 +28,6 @@ export class MovieComponent implements OnInit, OnDestroy {
   }
 
   playMovie(movie): any {
-    console.log(movie.id);
     const formatedReq = `${movie.title.replaceAll(' ', '+')}+(${
       movie.releaseDate.split('-')[0]
     })`;
@@ -40,8 +39,8 @@ export class MovieComponent implements OnInit, OnDestroy {
           if (resp !== 'Movie not found.') {
             this.hostLink = resp;
             const dialogConfig = new MatDialogConfig();
-            dialogConfig.disableClose = false;
-            dialogConfig.autoFocus = true;
+            // dialogConfig.disableClose = false;
+            // dialogConfig.autoFocus = true;
 
             let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
             if (this.innerWidth > 1500) {
@@ -56,10 +55,17 @@ export class MovieComponent implements OnInit, OnDestroy {
 
             const dialogRef = this.dialog.open(
               VideoModalComponent,
-              dialogConfig
+              {
+                width: dialogConfig.width,
+                height: dialogConfig.height,
+                data: {
+                  hostLink: this.hostLink
+                }
+
+              }
             );
 
-            dialogRef.componentInstance.hostLink = this.hostLink;
+            // dialogRef.componentInstance.hostLink = this.hostLink;
 
             dialogRef.afterClosed().subscribe((result) => {
               console.log(`Dialog result: ${result}`);
