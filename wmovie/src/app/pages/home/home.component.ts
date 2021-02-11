@@ -1,4 +1,3 @@
-
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
@@ -38,7 +37,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.loadMovies();
 
     setInterval(() => {
-      this.activeMovie = this.trending.results[++this.counter];
+      if (this.counter === 34) { // magic number -> end of the trending array
+        this.counter = 0;
+      }
+      this.activeMovie = this.trending.results[this.counter++];
     }, 3500);
   }
 
