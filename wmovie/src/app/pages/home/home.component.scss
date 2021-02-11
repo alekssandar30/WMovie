@@ -24,15 +24,16 @@
     justify-content: center;
 
     h2 {
-      font-size: 5rem;
+      font-size: 5vw;
       margin-left: 3rem;
-      margin-bottom: 6rem;
+      margin-bottom: 3rem;
       margin-top: 8rem;
       color: lightgray;
     }
 
     .header__buttons {
       display: flex;
+      // width: 3vw;
 
       button {
         display: flex;
@@ -54,12 +55,22 @@
       button.play-button {
         span {
           font-weight: 600;
-          font-size: 24px;
+          font-size: 20px;
         }
 
         mat-icon {
           transform: scale(2.5);
         }
+      }
+
+      button.play-button:hover {
+        z-index: 200;
+        transform: scale(1.1);
+      }
+
+      button.more-button:hover {
+        z-index: 200;
+        transform: scale(1.1);
       }
 
       button.more-button {

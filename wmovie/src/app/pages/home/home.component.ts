@@ -53,19 +53,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.hostLink = resp;
 
             const dialogConfig = new MatDialogConfig();
-            dialogConfig.disableClose = false;
-            dialogConfig.autoFocus = true;
 
-            let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
-            if (this.innerWidth > 1500) {
-              relativeWidth = (1500 * 80) / 100;
-            } else {
-              relativeWidth = (this.innerWidth * 80) / 100;
-            }
-
-            const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
-            dialogConfig.width = relativeWidth + 'px';
-            dialogConfig.height = relativeHeight + 'px';
+            this.setDialogConfig(dialogConfig);
 
             const dialogRef = this.dialog.open(
               VideoModalComponent,
@@ -82,6 +71,22 @@ export class HomeComponent implements OnInit, OnDestroy {
     );
   }
 
+  showBannerMovieInfo(): any {
+    alert(this.trending.results[0].overview);
+
+    // const dialogConfig = new MatDialogConfig();
+
+    // this.setDialogConfig(dialogConfig);
+
+    // const dialogRef = this.dialog.open(VideoModalComponent, dialogConfig);
+
+    // dialogRef.componentInstance.hostLink = this.hostLink;
+
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
+  }
+
   // TODO: fix this
   // changeBackgroundImg() {
   //   setInterval(() => {
@@ -91,6 +96,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   //     });
   //   }, 5000);
   // }
+
+  setDialogConfig(dialogConfig: MatDialogConfig): void {
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+
+    let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
+    if (this.innerWidth > 1500) {
+      relativeWidth = (1500 * 80) / 100;
+    } else {
+      relativeWidth = (this.innerWidth * 80) / 100;
+    }
+
+    const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
+    dialogConfig.width = relativeWidth + 'px';
+    dialogConfig.height = relativeHeight + 'px';
+  }
 
   loadMovies(): any {
     this.subs.push(
