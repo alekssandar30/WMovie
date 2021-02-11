@@ -1,16 +1,14 @@
 <!-- <div class="video-modal"> -->
 <h2 mat-dialog-title center>Uzivajte u filmu!</h2>
 
-<!-- First of all, you're not using the md-dialog-content properly since you're overriding it's height.
-  You're only supposed to wrap your content with it. E.g. <div md-dialog-content style="height: 500px">
-  should turn into <div md-dialog-content><div style="height: 500px"> in your example. -->
-
 <mat-dialog-content>
   <div class="videoWrapper">
     <iframe
+      id="movie-modal-id"
       [src]="domSanitizer.bypassSecurityTrustResourceUrl(data.hostLink)"
       frameborder="0"
       allowfullscreen
+      allowTransparency="true"
     ></iframe>
   </div>
 </mat-dialog-content>

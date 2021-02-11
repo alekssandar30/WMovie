@@ -37,12 +37,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.innerWidth = window.innerWidth;
     this.loadMovies();
 
-    // setInterval(() => {
-    //   if (this.counter === 34) { // magic number -> end of the trending array
-    //     this.counter = 0;
-    //   }
-    //   this.activeMovie = this.sliderMovies.results[this.counter++];
-    // }, 20000);
+    setInterval(() => {
+      if (this.counter === 34) { // magic number -> end of the trending array
+        this.counter = 0;
+      }
+      this.activeMovie = this.sliderMovies.results[this.counter++];
+    }, 4000);
   }
 
   ngOnDestroy(): void {

@@ -54,6 +54,7 @@ export class MovieComponent implements OnInit, OnDestroy {
             dialogConfig.height = relativeHeight + 'px';
 
             const dialogRef = this.dialog.open(
+
               VideoModalComponent,
               {
                 width: dialogConfig.width,
@@ -64,7 +65,6 @@ export class MovieComponent implements OnInit, OnDestroy {
 
               }
             );
-
             // dialogRef.componentInstance.hostLink = this.hostLink;
 
             dialogRef.afterClosed().subscribe((result) => {

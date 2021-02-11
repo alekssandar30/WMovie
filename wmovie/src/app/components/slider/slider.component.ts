@@ -1,7 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
-import { MovieService } from 'src/app/services/movie.service';
 import { ResultsEntity } from '../../models/movies';
 
 @Component({
@@ -10,8 +7,6 @@ import { ResultsEntity } from '../../models/movies';
   styleUrls: ['./slider.component.scss'],
 })
 export class SliderComponent implements OnInit {
-  subscriptions: Subscription = new Subscription();
-
   @Input() movies: ResultsEntity[];
   @Input() title: string;
 
@@ -20,9 +15,29 @@ export class SliderComponent implements OnInit {
     slidesToScroll: 3,
     arrows: true,
     autoplay: false,
+    responsive: [
+      {
+        breakpoint: 424,
+        'settings': {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 767,
+        'settings': {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 1023,
+        'settings': {
+          slidesToShow: 5,
+        }
+      },
+    ],
   };
 
-  constructor(private movieService: MovieService, public dialog: MatDialog) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }

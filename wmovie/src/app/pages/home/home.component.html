@@ -8,9 +8,9 @@
       <h2>{{activeMovie.title}}</h2>
       <div class="header__buttons">
 
-        <button class="play-button"> <!-- Ovo je uvek za naslovni film...-->
+        <button (click)="playBanerMovie()" class="play-button"> <!-- Ovo je uvek za naslovni film...-->
           <mat-icon>arrow_right</mat-icon>
-          <span (click)="playBanerMovie()">Pusti</span>
+          <span>Pusti</span>
         </button>
 
         <button class="more-button">

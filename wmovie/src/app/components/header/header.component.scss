@@ -10,6 +10,15 @@
   transition: all 0.3s;
   transition-timing-function: ease-in;
 
+  .logo {
+    width: 200px;
+    max-width: 300px;
+    min-width: 2em;
+    float: left;
+    left: 0;
+    margin: 0;
+  }
+
   &.sticky {
     background-color: #0D0D0D;
     z-index: 100;
