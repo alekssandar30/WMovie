@@ -1,0 +1,12 @@
+<div class="genre-filters">
+  <span
+    *ngFor="let genre of genres"
+    (click)="onGetGenre(genre)"
+    [ngStyle]="{
+      border: genre.active ? '1px solid rgb(219, 32, 44)' : '',
+      'border-shadow': genre.active ? '2px 2px 2px 2px rgb(200, 2, 55)' : ''
+    }"
+  >
+    {{ genre.name }}
+  </span>
+</div>

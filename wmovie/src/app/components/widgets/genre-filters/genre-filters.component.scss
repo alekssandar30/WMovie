@@ -1,0 +1,32 @@
+
+.genre-filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 90%;
+  margin: 5em 0 0 5em;
+  height: 10%;
+  color: #fff;
+  margin-top: 3%;
+  flex-wrap: wrap;
+
+  span {
+    margin: .4rem;
+    min-width: 5rem;
+    text-align: center;
+    padding: .6rem 1.2rem;
+    // border: 1px solid rgb(200, 2, 55);
+    border: 1px solid #fff;
+    border-radius: 1.3rem;
+  }
+
+  span:hover {
+    cursor: pointer;
+    border: 1px solid gray;
+  }
+
+  // .active {
+  //   border: 1px solid chocolate;
+  // }
+}

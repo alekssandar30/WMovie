@@ -19,6 +19,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { VideoModalComponent } from './components/video-modal/video-modal.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { FooterComponent } from './components/footer/footer.component';
+import { GenreFiltersComponent } from './components/widgets/genre-filters/genre-filters.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     TvSeriesComponent,
     HeaderComponent,
     VideoModalComponent,
+    FooterComponent,
+    GenreFiltersComponent,
   ],
   imports: [
     BrowserModule,

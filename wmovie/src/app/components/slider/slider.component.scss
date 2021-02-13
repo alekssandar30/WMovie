@@ -54,20 +54,12 @@ img {
         transition: all 0.3s ease;
       }
 
-      .slick-item:hover {
-        transform: scale(1.06);
-        cursor: pointer;
-      }
-
       .movie-container {
         display: flex;
+        width: 100%;
         position: relative;
         overflow: hidden;
-
-        img:hover {
-          transform: scale(1.02);
-          cursor: pointer;
-        }
+        justify-content: space-evenly;
 
         app-movie:hover {
           transform: scale(1.06);

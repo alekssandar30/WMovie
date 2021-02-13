@@ -23,15 +23,21 @@ export class SliderComponent implements OnInit {
         }
       },
       {
-        breakpoint: 767,
+        breakpoint: 790,
         'settings': {
           slidesToShow: 3,
         }
       },
       {
-        breakpoint: 1023,
+        breakpoint: 1000,
         'settings': {
           slidesToShow: 5,
+        }
+      },
+      {
+        breakpoint: 1500,
+        'settings': {
+          slidesToShow: 6,
         }
       },
     ],

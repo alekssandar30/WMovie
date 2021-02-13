@@ -39,8 +39,8 @@ export class MovieComponent implements OnInit, OnDestroy {
           if (resp !== 'Movie not found.') {
             this.hostLink = resp;
             const dialogConfig = new MatDialogConfig();
-            // dialogConfig.disableClose = false;
-            // dialogConfig.autoFocus = true;
+            dialogConfig.disableClose = false;
+            dialogConfig.autoFocus = true;
 
             let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
             if (this.innerWidth > 1500) {
@@ -53,17 +53,14 @@ export class MovieComponent implements OnInit, OnDestroy {
             dialogConfig.width = relativeWidth + 'px';
             dialogConfig.height = relativeHeight + 'px';
 
+            dialogConfig.data = {
+              movie: movie,
+              hostLink: this.hostLink,
+            };
+
             const dialogRef = this.dialog.open(
-
               VideoModalComponent,
-              {
-                width: dialogConfig.width,
-                height: dialogConfig.height,
-                data: {
-                  hostLink: this.hostLink
-                }
-
-              }
+              dialogConfig
             );
             // dialogRef.componentInstance.hostLink = this.hostLink;
 

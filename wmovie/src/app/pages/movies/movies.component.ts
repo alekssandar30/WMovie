@@ -20,10 +20,10 @@ export class MoviesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    // TODO: mozda i ovo promeniti da bude kao getByGenre...
     this.subscriptions.add(
       this.route.paramMap.subscribe((params) => {
         const movieName = params.get('movieName');
-        console.log(params);
 
         if (!movieName) {
           this.subscriptions.add(
@@ -63,5 +63,10 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  getByGenre(event) {
+    // refresh movies list
+    this.movies.results = event;
   }
 }

@@ -110,6 +110,8 @@
       max-width: 250px;
       // width: 500px;
       // object-fit: cover; TODO: fix this
+      object-position: center;
+      object-fit: cover;
     }
 
     .movie-info {

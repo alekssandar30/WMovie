@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   topRated: Movies;
   // originals: Movies;
   // nowPlaying: Movies;
-  sliderMovies: Movies;
 
   trendingLoaded = false;
   popularLoaded = false;
@@ -41,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (this.counter === 34) { // magic number -> end of the trending array
         this.counter = 0;
       }
-      this.activeMovie = this.sliderMovies.results[this.counter++];
+      this.activeMovie = this.trending.results[this.counter++];
     }, 4000);
   }
 
@@ -59,23 +58,29 @@ export class HomeComponent implements OnInit, OnDestroy {
         .subscribe((resp) => {
           if (resp !== 'Movie not found.') {
             this.hostLink = resp;
-
             const dialogConfig = new MatDialogConfig();
+            dialogConfig.disableClose = false;
+            dialogConfig.autoFocus = true;
 
-            this.setDialogConfig(dialogConfig);
+            let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
+            if (this.innerWidth > 1500) {
+              relativeWidth = (1500 * 80) / 100;
+            } else {
+              relativeWidth = (this.innerWidth * 80) / 100;
+            }
+
+            const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
+            dialogConfig.width = relativeWidth + 'px';
+            dialogConfig.height = relativeHeight + 'px';
+            dialogConfig.data = {
+              movie: this.activeMovie,
+              hostLink: this.hostLink,
+            };
 
             const dialogRef = this.dialog.open(
               VideoModalComponent,
-              {
-                width: dialogConfig.width,
-                height: dialogConfig.height,
-                data: {
-                  hostLink: this.hostLink
-                }
-
-              }
+              dialogConfig
             );
-
             // dialogRef.componentInstance.hostLink = this.hostLink;
 
             dialogRef.afterClosed().subscribe((result) => {
@@ -126,12 +131,11 @@ export class HomeComponent implements OnInit, OnDestroy {
             'https://image.tmdb.org/t/p/original' + movie.backdropPath;
         });
         this.trending = data;
-        this.sliderMovies = data;
         // this.headerBGUrl =
         //   'https://image.tmdb.org/t/p/original' +
         //   this.trending.results[0].backdropPath;
         // this.headerTitle = this.trending.results[0].title;
-        this.activeMovie = this.sliderMovies.results[0];
+        this.activeMovie = this.trending.results[0];
         console.log(this.activeMovie);
         this.trendingLoaded = true;
       })

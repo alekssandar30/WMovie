@@ -3,11 +3,13 @@
     <app-header></app-header>
   </div>
 
+  <app-genre-filters (moviesEmitter)="getByGenre($event)"></app-genre-filters>
+
   <div class="movie-container">
     <app-movie
       *ngFor="let movie of movies?.results"
       [movie]="movie"
-      [showOverview]="true"
+      [showOverview]="false"
     ></app-movie>
   </div>
 </div>

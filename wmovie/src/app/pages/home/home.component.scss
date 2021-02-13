@@ -43,12 +43,16 @@
         gap: 10px;
         align-items: center;
         font-size: .7rem;
-        padding: 1.2rem 1.5rem;  // TOP BOTTOM = 15px,  RIGHT LEFT = 40px
+        padding: 0.8rem .9rem;  // TOP BOTTOM = 15px,  RIGHT LEFT = 40px
         border-radius: 5px;
         outline: none;
         border: none;
         margin-left: 50px;
         cursor: pointer;
+        // width: ;
+        // height: 3rem;
+
+
 
         mat-icon {
           transform: scale(1.25);
@@ -56,6 +60,7 @@
       }
 
       button.play-button {
+
         span {
           font-weight: 600;
           font-size: 20px;
@@ -103,5 +108,9 @@
       display: none;
     }
   }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+
 }
 

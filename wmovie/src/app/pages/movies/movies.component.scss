@@ -29,6 +29,12 @@
     app-movie {
       flex: 1 auto;
     }
+
+    app-movie:hover {
+      transform: scale(1.06);
+      cursor: pointer;
+    }
   }
+
 
 }

@@ -1,6 +1,7 @@
 <!-- <div class="video-modal"> -->
-<h2 mat-dialog-title center>Uzivajte u filmu!</h2>
-
+<h2 mat-dialog-title center class="video-modal-title">
+  {{ data.movie.title }}
+</h2>
 <mat-dialog-content>
   <div class="videoWrapper">
     <iframe
@@ -11,6 +12,18 @@
       allowTransparency="true"
     ></iframe>
   </div>
+  <!--Ovde ce ici Overview filma sa ocenom i glumcima i release datetom...-->
+
 </mat-dialog-content>
 
-<!--Ovde ce ici Overview filma sa ocenom i glumcima i release datetom...-->
+<mat-dialog-actions>
+  <div class="about-movie">
+    <!-- <h3 mat-dialog-title center>About</h3> -->
+    <!-- <span>Glumci: pera, mika zika</span> -->
+    <!-- <span> Description: </span> -->
+    <hr />
+    <p class="movie-desc">
+      {{ data.movie.overview }}
+    </p>
+    </div>
+</mat-dialog-actions>

@@ -160,4 +160,9 @@ export class MovieService {
   searchMovie(searchText): Observable<Movies> {
     return this.http.get<Movies>(`${this.API_URL}/tmdb/search/${searchText}`);
   }
+
+  // 878/11 ???
+  getByGenre(genre, pageNum): Observable<Movies> {
+    return this.http.get<Movies>(`${this.API_URL}/tmdb/getGenre/${genre.id}/${pageNum}`);
+  }
 }
