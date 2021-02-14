@@ -13,13 +13,17 @@
 
   span {
     margin: 0 .4rem .4rem .4rem;
-    width: 1rem;
-    height: 1rem;
     min-width: .6rem;
     text-align: center;
     padding: .6rem 1.2rem;
     // border: 1px solid rgb(200, 2, 55);
     border: 1px solid #fff;
     // border-radius: 1.3rem;
+  }
+
+  span:hover {
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid gray;
   }
 }

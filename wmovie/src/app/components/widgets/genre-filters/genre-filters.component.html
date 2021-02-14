@@ -1,6 +1,6 @@
 <div class="genre-filters">
   <span
-    *ngFor="let genre of genres"
+    *ngFor="let genre of genres; trackBy:trackByFn"
     (click)="onGetGenre(genre)"
     [ngStyle]="{
       border: genre.active ? '1px solid rgb(219, 32, 44)' : '',

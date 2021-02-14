@@ -1,7 +1,11 @@
-
 <div class="pagination-bar">
-  <span>1</span>
-  <span>2</span>
-  <span>3</span>
-  <span>4</span>
+  <span
+    *ngFor="let page of pages"
+    [ngStyle]="{
+      border: page.active ? '1px solid rgb(219, 32, 44)' : '',
+      'border-shadow': page.active ? '2px 2px 2px 2px rgb(200, 2, 55)' : ''
+    }"
+  >
+    {{ page.pageNum }}
+  </span>
 </div>

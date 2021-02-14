@@ -18,27 +18,27 @@ export class SliderComponent implements OnInit {
     responsive: [
       {
         breakpoint: 424,
-        'settings': {
-          slidesToShow: 2
-        }
+        settings: {
+          slidesToShow: 2,
+        },
       },
       {
         breakpoint: 790,
-        'settings': {
+        settings: {
           slidesToShow: 3,
-        }
+        },
       },
       {
         breakpoint: 1000,
-        'settings': {
+        settings: {
           slidesToShow: 5,
-        }
+        },
       },
       {
         breakpoint: 1500,
-        'settings': {
+        settings: {
           slidesToShow: 6,
-        }
+        },
       },
     ],
   };
@@ -46,4 +46,8 @@ export class SliderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  trackByFn(item, index) {
+    return item.id;
+  }
 }

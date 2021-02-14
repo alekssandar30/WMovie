@@ -102,4 +102,8 @@ export class GenreFiltersComponent implements OnInit, OnDestroy {
     this.genres.map((g) => (g.active = false));
     genre.active = true;
   }
+
+  trackByFn(index, item) {
+    return item.name;
+  }
 }

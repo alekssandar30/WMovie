@@ -26,36 +26,10 @@ export class MoviesComponent implements OnInit, OnDestroy {
         const movieName = params.get('movieName');
 
         if (!movieName) {
-          this.subscriptions.add(
-            this.movieService.getTrending().subscribe((data) => {
-              this.movies = data;
-              // this.movies.results = this.movies.results.filter(
-              //   (x) => x.media_type === 'movie'
-              // );
-
-              this.subscriptions.add(
-                this.movieService.getTopRated().subscribe((resp) => {
-                  resp.results.forEach((movie) => {
-                    if (
-                      !(
-                        this.movies.results.filter((x) => x.id === movie.id)
-                          .length > 0
-                      )
-                    ) {
-                      this.movies.results.push(movie);
-                    }
-                  });
-                })
-              );
-            })
-          );
+          this.loadMovies();
         } else {
           // search
-          this.subscriptions.add(
-            this.movieService.searchMovie(movieName).subscribe((data) => {
-              this.movies = data;
-            })
-          );
+          this.getSearchedMovie(movieName);
         }
       })
     );
@@ -65,8 +39,43 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
+  loadMovies() {
+    this.subscriptions.add(
+      this.movieService.getTrending().subscribe((data) => {
+        this.movies = data;
+
+        this.subscriptions.add(
+          this.movieService.getTopRated().subscribe((resp) => {
+            resp.results.forEach((movie) => {
+              if (
+                !(
+                  this.movies.results.filter((x) => x.id === movie.id).length >
+                  0
+                )
+              ) {
+                this.movies.results.push(movie);
+              }
+            });
+          })
+        );
+      })
+    );
+  }
+
+  getSearchedMovie(movieName) {
+    this.subscriptions.add(
+      this.movieService.searchMovie(movieName).subscribe((data) => {
+        this.movies = data;
+      })
+    );
+  }
+
   getByGenre(event) {
     // refresh movies list
     this.movies.results = event;
+  }
+
+  trackByFn(item, index) {
+    return item.id;
   }
 }
