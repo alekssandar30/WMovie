@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   showBannerMovieInfo(): any {
-    alert(this.trending.results[0].overview);
+    // alert(this.trending.results[0].overview);
 
     // const dialogConfig = new MatDialogConfig();
 

@@ -21,6 +21,7 @@ import { VideoModalComponent } from './components/video-modal/video-modal.compon
 import {MatDialogModule} from '@angular/material/dialog';
 import { FooterComponent } from './components/footer/footer.component';
 import { GenreFiltersComponent } from './components/widgets/genre-filters/genre-filters.component';
+import { PaginationBarComponent } from './components/widgets/pagination-bar/pagination-bar.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { GenreFiltersComponent } from './components/widgets/genre-filters/genre-
     VideoModalComponent,
     FooterComponent,
     GenreFiltersComponent,
+    PaginationBarComponent,
   ],
   imports: [
     BrowserModule,

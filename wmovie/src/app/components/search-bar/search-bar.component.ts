@@ -20,7 +20,6 @@ export class SearchBarComponent implements OnInit {
       return;
     }
 
-    console.log(this.searchInput);
     this.router.navigate(['/movies/search/' + this.searchInput]);
   }
 }

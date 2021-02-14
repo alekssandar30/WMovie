@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'search/:movieName',
         component: MoviesComponent,
       },
+      {
+        path: ':genre/:pageNum',
+        component: MoviesComponent
+      }
     ],
   },
 

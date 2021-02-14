@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MovieService } from 'src/app/services/movie.service';
@@ -8,7 +8,7 @@ import { MovieService } from 'src/app/services/movie.service';
   templateUrl: './genre-filters.component.html',
   styleUrls: ['./genre-filters.component.scss'],
 })
-export class GenreFiltersComponent implements OnInit {
+export class GenreFiltersComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
 
   public genres = [
@@ -85,6 +85,10 @@ export class GenreFiltersComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   onGetGenre(genre) {
     // call getGenre
