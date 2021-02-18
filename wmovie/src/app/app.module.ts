@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FooterComponent } from './components/footer/footer.component';
 import { GenreFiltersComponent } from './components/widgets/genre-filters/genre-filters.component';
 import { PaginationBarComponent } from './components/widgets/pagination-bar/pagination-bar.component';
+import { LoadingSpinnerComponent } from './components/widgets/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PaginationBarComponent } from './components/widgets/pagination-bar/pagi
     FooterComponent,
     GenreFiltersComponent,
     PaginationBarComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

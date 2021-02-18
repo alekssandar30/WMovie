@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   handleScroll(): any {
     const windowScroll = window.pageYOffset;
 
-    if (windowScroll >= this.header.nativeElement.offsetHeight) {
+    if ((windowScroll + 50) >= this.header.nativeElement.offsetHeight) {
       this.sticky = true;
     } else {
       this.sticky = false;

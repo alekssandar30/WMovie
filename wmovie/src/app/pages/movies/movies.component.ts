@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CommonService } from 'src/app/core/common.service';
 import { Movies } from 'src/app/models/movies';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -13,10 +14,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
   subscriptions: Subscription = new Subscription();
   movies: Movies;
   moviesLoaded = false;
+  currentGenre;
 
   constructor(
     private movieService: MovieService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public common: CommonService
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +59,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
                 this.movies.results.push(movie);
               }
             });
+            this.common.showSpinner = false;
           })
         );
       })
@@ -66,13 +70,22 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.movieService.searchMovie(movieName).subscribe((data) => {
         this.movies = data;
+        this.common.showSpinner = false;
       })
     );
   }
 
   getByGenre(event) {
     // refresh movies list
-    this.movies.results = event;
+    this.movies.results = event.data;
+    this.currentGenre = event.activeGenre;
+    this.common.showSpinner = false;
+  }
+
+  handlePagination(event) {
+    this.movies.results = event.data;
+    this.currentGenre = event.activeGenre;
+    // this.common.showSpinner = false;
   }
 
   trackByFn(item, index) {

@@ -5,6 +5,7 @@
       border: page.active ? '1px solid rgb(219, 32, 44)' : '',
       'border-shadow': page.active ? '2px 2px 2px 2px rgb(200, 2, 55)' : ''
     }"
+    (click)="handlePagination(page)"
   >
     {{ page.pageNum }}
   </span>

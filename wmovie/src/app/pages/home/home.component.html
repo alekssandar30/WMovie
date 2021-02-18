@@ -10,7 +10,7 @@
 
         <button (click)="playBanerMovie()" class="play-button"> <!-- Ovo je uvek za naslovni film...-->
           <mat-icon>arrow_right</mat-icon>
-          <span>Play</span>
+          <span>Pusti</span>
         </button>
 
         <button class="more-button">
@@ -30,11 +30,11 @@
   </div>
 
   <div class="body">
-    <app-slider title="Trending" *ngIf="trendingLoaded" [movies]="trending?.results" ></app-slider>
-    <app-slider title="Best rated" *ngIf="topRatedLoaded" [movies]="topRated?.results" ></app-slider>
+    <app-slider title="U trendingu" *ngIf="trendingLoaded" [movies]="trending?.results" ></app-slider>
+    <app-slider title="Najbolje ocenjeni" *ngIf="topRatedLoaded" [movies]="topRated?.results" ></app-slider>
     <!-- <app-slider title="Now Playing" *ngIf="nowPlayingLoaded" [movies]="nowPlaying?.results" ></app-slider> -->
     <!-- <app-slider title="Originals" *ngIf="originalsLoaded" [movies]="originals?.results" ></app-slider> -->
-    <app-slider title="Most popular" *ngIf="popularLoaded" [movies]="popular?.results" ></app-slider>
+    <app-slider title="Popularni" *ngIf="popularLoaded" [movies]="popular?.results" ></app-slider>
   </div>
 
 

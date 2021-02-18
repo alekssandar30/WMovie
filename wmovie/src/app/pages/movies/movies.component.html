@@ -3,6 +3,8 @@
     <app-header></app-header>
   </div>
 
+  <app-loading-spinner *ngIf="common.showSpinner"></app-loading-spinner>
+
   <app-genre-filters (moviesEmitter)="getByGenre($event)"></app-genre-filters>
 
   <div class="movie-container">
@@ -13,7 +15,7 @@
     ></app-movie>
   </div>
   <!-- <hr> -->
-  <app-pagination-bar></app-pagination-bar>
+  <app-pagination-bar [genre]="currentGenre" (moviesEmitter)="handlePagination($event)"></app-pagination-bar>
 
   <hr>
   <app-footer></app-footer>

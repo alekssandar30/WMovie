@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
 import { VideoModalComponent } from 'src/app/components/video-modal/video-modal.component';
+import { CommonService } from 'src/app/core/common.service';
 import { Movies } from 'src/app/models/movies';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   innerWidth;
   counter = 0;
 
-  constructor(private movieService: MovieService, public dialog: MatDialog) {}
+  constructor(private movieService: MovieService, public dialog: MatDialog, public common: CommonService) {}
 
   ngOnInit(): any {
     this.innerWidth = window.innerWidth;
@@ -131,10 +132,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             'https://image.tmdb.org/t/p/original' + movie.backdropPath;
         });
         this.trending = data;
-        // this.headerBGUrl =
-        //   'https://image.tmdb.org/t/p/original' +
-        //   this.trending.results[0].backdropPath;
-        // this.headerTitle = this.trending.results[0].title;
+
         this.activeMovie = this.trending.results[0];
         console.log(this.activeMovie);
         this.trendingLoaded = true;
@@ -152,17 +150,5 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.topRatedLoaded = true;
       })
     );
-    // this.subs.push(
-    //   this.movieService.getOriginals().subscribe((data) => {
-    //     this.originals = data;
-    //     this.originalsLoaded = true;
-    //   })
-    // );
-    // this.subs.push(
-    //   this.movieService.getNowPlaying().subscribe((data) => {
-    //     this.nowPlaying = data;
-    //     this.nowPlayingLoaded = true;
-    //   })
-    // );
   }
 }

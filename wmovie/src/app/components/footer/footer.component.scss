@@ -8,7 +8,7 @@
   align-items: center;
 
   .disclaimer {
-    width: 20%;
+    width: 33.33%;
     margin: 0;
     padding: 2em 2em;
     text-align: center;
@@ -19,6 +19,8 @@
   }
 
   .social-sharing {
+    width: 33.33%;
+
     .fa {
       padding: 2em;
       font-size: .6rem;
@@ -49,5 +51,9 @@
       ;
       color: white;
     }
+  }
+
+  .seo-links {
+    width: 33.33%;
   }
 }

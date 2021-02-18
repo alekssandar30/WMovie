@@ -14,22 +14,22 @@ export class GenreFiltersComponent implements OnInit, OnDestroy {
   public genres = [
     {
       id: 28,
-      name: 'Action',
+      name: 'Akcija',
       active: false,
     },
     {
       id: 12,
-      name: 'Adventure',
+      name: 'Avantura',
       active: false,
     },
     {
       id: 35,
-      name: 'Comedy',
+      name: 'Komedija',
       active: false,
     },
     {
       id: 80,
-      name: 'Crime',
+      name: 'Krimi',
       active: false,
     },
     {
@@ -39,48 +39,50 @@ export class GenreFiltersComponent implements OnInit, OnDestroy {
     },
     {
       id: 10751,
-      name: 'Family',
+      name: 'Porodicni',
       active: false,
     },
     {
       id: 14,
-      name: 'Fantasy',
+      name: 'Fantazija',
       active: false,
     },
     {
       id: 36,
-      name: 'History',
+      name: 'Istorijski',
       active: false,
     },
     {
       id: 27,
-      name: 'Horror',
+      name: 'Horor',
       active: false,
     },
     {
       id: 9648,
-      name: 'Mystery',
+      name: 'Misterije',
       active: false,
     },
     {
       id: 10749,
-      name: 'Romance',
+      name: 'Romanticni',
       active: false,
     },
     {
       id: 878,
-      name: 'Science Fiction',
+      name: 'Naucna fantastika',
       active: false,
     },
     {
       id: 53,
-      name: 'Thriller',
+      name: 'Trileri',
       active: false,
     },
   ];
 
   @Output()
   moviesEmitter = new EventEmitter();
+
+  genreFilter: any = {};
 
   constructor(private movieService: MovieService) {}
 
@@ -94,7 +96,9 @@ export class GenreFiltersComponent implements OnInit, OnDestroy {
     // call getGenre
     this.subscriptions.add(
       this.movieService.getByGenre(genre, 1).subscribe((resp: any) => {
-        this.moviesEmitter.emit(resp);
+        this.genreFilter.data = resp;
+        this.genreFilter.activeGenre = genre;
+        this.moviesEmitter.emit(this.genreFilter);
       })
     );
 
