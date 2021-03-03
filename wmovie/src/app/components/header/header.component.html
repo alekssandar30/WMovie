@@ -2,15 +2,17 @@
   <!--MAIN AREA-->
  <div class="header__main" id="stickyHeader" [class.sticky]="sticky" #stickHeader>
    <div class="header__left">
-     <a routerLink="/">
+     <a routerLink="/" rel="nofollow noopener">
        <img class="logo" src="assets/SRBILIX.svg" alt="logo">
      </a>
      <ul>
-       <li [routerLink]="['']" [routerLinkActive]="['active']">
-         <a>Pocetna</a>
+       <li>
+         <a [routerLink]="['']" routerLinkActive="active" href="" rel="nofollow noopener">Pocetna</a>
       </li>
        <!-- <li><a href="#">TV Shows</a></li> -->
-       <li [routerLink]="['/movies']" [routerLinkActive]="['active']"><a >Filmovi</a></li>
+       <li>
+         <a [routerLink]="['/movies']" routerLinkActive="active" href="/movies" rel="nofollow noopener">Filmovi</a>
+       </li>
        <!-- <li><a href="#">Latest</a></li>
        <li><a href="#">My List</a></li> -->
      </ul>

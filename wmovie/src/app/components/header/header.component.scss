@@ -88,9 +88,10 @@ ul {
     &:hover {
       color: #696969;
     }
+  }
 
-    a.active {
-      color: white;
-    }
+  li > a.active {
+    color: white;
+    text-shadow: -1px -1px 0  rgb(200, 2, 55), 1px -1px 0  rgb(200, 2, 55), -1px 1px 0  rgb(200, 2, 55), 1px 1px 0  rgb(200, 2, 55);
   }
 }

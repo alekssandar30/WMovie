@@ -134,7 +134,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.trending = data;
 
         this.activeMovie = this.trending.results[0];
-        console.log(this.activeMovie);
         this.trendingLoaded = true;
       })
     );

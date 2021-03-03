@@ -15,8 +15,8 @@
     ></app-movie>
   </div>
   <!-- <hr> -->
-  <app-pagination-bar [genre]="currentGenre" (moviesEmitter)="handlePagination($event)"></app-pagination-bar>
+  <app-pagination-bar *ngIf="currentGenre" [genre]="currentGenre" (moviesEmitter)="handlePagination($event)"></app-pagination-bar>
 
-  <hr>
+  <hr *ngIf="currentGenre">
   <app-footer></app-footer>
 </div>

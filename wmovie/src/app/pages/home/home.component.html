@@ -30,6 +30,7 @@
   </div>
 
   <div class="body">
+    <app-loading-spinner *ngIf="!trendingLoaded || !topRatedLoaded || !popularLoaded"></app-loading-spinner>
     <app-slider title="U trendingu" *ngIf="trendingLoaded" [movies]="trending?.results" ></app-slider>
     <app-slider title="Najbolje ocenjeni" *ngIf="topRatedLoaded" [movies]="topRated?.results" ></app-slider>
     <!-- <app-slider title="Now Playing" *ngIf="nowPlayingLoaded" [movies]="nowPlaying?.results" ></app-slider> -->
