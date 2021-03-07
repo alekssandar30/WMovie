@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { VideoModalComponent } from '../video-modal/video-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -9,18 +9,28 @@ import { Subscription } from 'rxjs';
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss'],
 })
-export class MovieComponent implements OnInit, OnDestroy {
+export class MovieComponent implements OnInit, OnDestroy, OnChanges {
   subscriptions: Subscription = new Subscription();
 
   @Input() movie;
   @Input() showOverview;
   hostLink = '';
   innerWidth;
+  defaultImg = '../../../assets/lazy-load-default.svg';
+  image;
+  imgPrefix = 'https://image.tmdb.org/t/p/w200';
+  imageOffset = 100; // in pixels
 
   constructor(private movieService: MovieService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.image = this.imgPrefix + this.movie.posterPath;
     this.innerWidth = window.innerWidth;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.movie = changes.movie.currentValue;
+    this.image = this.imgPrefix + this.movie.posterPath;
   }
 
   ngOnDestroy(): void {

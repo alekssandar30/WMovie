@@ -1,5 +1,5 @@
 <div class="movie" (click)="playMovie(movie)">
-  <img src="https://image.tmdb.org/t/p/w200{{movie?.posterPath}}" alt="{{movie.title}}">
+  <img [defaultImage]="defaultImg" [lazyLoad]="image" src="image" alt="{{movie.title}}">
 
   <div class="movie-info">
     <h4> {{movie.title}} </h4>

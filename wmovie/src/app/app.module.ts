@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -49,7 +50,8 @@ import { LoadingSpinnerComponent } from './components/widgets/loading-spinner/lo
     SlickCarouselModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    LazyLoadImageModule
   ],
   providers: [],
   bootstrap: [AppComponent],
